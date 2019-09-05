@@ -13,6 +13,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { CounterEffects } from './effects/counter.effects';
+import { WatchlistModule } from './features/watchlist/watchlist.module';
 
 @NgModule({
   declarations: [
@@ -26,9 +27,10 @@ import { CounterEffects } from './effects/counter.effects';
     BrowserModule,
     AppRoutingModule,
     TodoModule,
+    WatchlistModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(), // need this to run the chrome redux add-on. don't keep this in prod
-    EffectsModule.forRoot([CounterEffects])
+    EffectsModule.forRoot([CounterEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]
