@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { WatchlistListItem } from '../../models';
 import { Observable } from 'rxjs';
 import { WatchListState, selectWatchListItems } from '../../reducers';
@@ -8,15 +8,18 @@ import { Store } from '@ngrx/store';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+  // when parent pushes new data into the input WatchlistListItem[], it compares. Don't need to watch every property, just the input.
+  // Will only work on inputs
+  // Useful when displaying an array of things.
 })
 export class ListComponent implements OnInit {
 
-  items$: Observable<WatchlistListItem[]>;
+  @Input() items: WatchlistListItem[];
   constructor(private store: Store<WatchListState>) { }
 
   ngOnInit() {
-    this.items$ = this.store.select(selectWatchListItems);
   }
 
 }
