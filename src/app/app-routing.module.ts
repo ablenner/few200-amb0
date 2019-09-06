@@ -5,6 +5,7 @@ import { AboutComponent } from './components/about/about.component';
 import { TodoComponent } from './features/todo/todo.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { WatchlistComponent } from './features/watchlist/watchlist.component';
+import { BookcollectionComponent } from './features/bookcollection/bookcollection.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'watchlist',
     component: WatchlistComponent
+  },
+  {
+    path: 'bookcollection',
+    component: BookcollectionComponent
   },
   {
     path: 'counter',
